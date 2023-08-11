@@ -27,7 +27,6 @@ class TicketMail extends Mailable implements ShouldQueue
     public function build(): TicketMail
     {
         return $this->markdown('emails.ticket')
-            ->replyTo($this->email)
             ->subject('Tiket Masuk')
             ->with([
                 'message' => $this->message,

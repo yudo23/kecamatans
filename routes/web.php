@@ -73,4 +73,8 @@ Route::group(["as" => "services.", "prefix" => "/services"], function () {
     Route::get('/{slug}', 'ServiceController@show')->name('show');
 });
 
+Route::group(["as" => "files.", "prefix" => "/files"], function () {
+    Route::get('/', 'FileController@index')->name('index');
+});
+
 

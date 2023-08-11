@@ -12,6 +12,8 @@ class LandingPageSetting extends Settings
 
     public ?string $logo;
 
+    public ?string $logo_footer;
+
     public ?string $favicon;
 
     public ?string $banner;

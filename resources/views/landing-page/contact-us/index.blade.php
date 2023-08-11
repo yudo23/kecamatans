@@ -87,28 +87,23 @@
                         @if(!empty(\SettingHelper::settings('landing_page', 'address')))
                         <li class="s-txt32 rs2-color p-b-10">
                             <i class="m-r-5 fa fa-home" aria-hidden="true"></i>
-                            379 5th Ave  New York, NYC 10018
+                            {{\SettingHelper::settings('landing_page', 'address')}}
                         </li>
                         @endif
                         
                         @if(!empty(\SettingHelper::settings('landing_page', 'hotline')))
                         <li class="s-txt32 rs2-color p-b-10">
                             <i class="m-r-5 fa fa-fax" aria-hidden="true"></i>
-                            (+1) 96 716 6879
+                            {{\SettingHelper::settings('landing_page', 'hotline')}}
                         </li>
                         @endif
 
                         @if(!empty(\SettingHelper::settings('landing_page', 'email')))
                         <li class="s-txt32 rs2-color p-b-10">
                             <i class="m-r-5 fa fa-envelope-o" aria-hidden="true"></i>
-                            contact@site.com
+                            {{\SettingHelper::settings('landing_page', 'email')}}
                         </li>
                         @endif
-
-                        <li class="s-txt32 rs2-color p-b-10">
-                            <i class="m-r-5 fa fa-clock-o" aria-hidden="true"></i>
-                            Mon-Fri 09:00 - 17:00
-                        </li>
                     </ul>
                 </div>
             </div>

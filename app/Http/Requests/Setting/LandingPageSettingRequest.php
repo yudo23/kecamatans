@@ -20,6 +20,12 @@ class LandingPageSettingRequest extends FormRequest
                 'max:2048',
                 'mimes:jpeg,png,jpg,svg',
             ],
+            'logo_footer' => [
+                'nullable',
+                'image',
+                'max:2048',
+                'mimes:jpeg,png,jpg,svg',
+            ],
             'favicon' => [
                 'nullable',
                 'image',
@@ -46,6 +52,9 @@ class LandingPageSettingRequest extends FormRequest
             'logo.image' => 'Logo harus berupa gambar',
             'logo.mimes' => 'Logo harus berupa jpeg,png,jpg,svg',
             'logo.max' => 'Logo tidak boleh lebih dari 2MB',
+            'logo_footer.image' => 'Logo footer harus berupa gambar',
+            'logo_footer.mimes' => 'Logo footer harus berupa jpeg,png,jpg,svg',
+            'logo_footer.max' => 'Logo footer tidak boleh lebih dari 2MB',
             'favicon.image' => 'Favicon harus berupa gambar',
             'favicon.mimes' => 'Favicon harus berupa jpeg,png,jpg,svg',
             'favicon.max' => 'Favicon tidak boleh lebih dari 2MB',

@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
-                                <label class="col-md-2 col-form-label">Logo</label>
+                                <label class="col-md-2 col-form-label">Logo Navbar</label>
                                 <div class="col-md-10">
                                     @if(!empty($result->logo))
                                     <div class="mb-2">
@@ -60,6 +60,19 @@
                                     </div>
                                     @endif
                                     <input type="file" class="form-control" name="logo" accept="image/*">
+                                    <p class="text-success" style="margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px;"><small><i>Ukuran direkomendasikan 309px x 69px</i></small></p>
+                                    <p class="text-info" style="margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px;"><small><i>Kosongkan jika tidak diubah</i></small></p>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-3">
+                                <label class="col-md-2 col-form-label">Logo Footer</label>
+                                <div class="col-md-10">
+                                    @if(!empty($result->logo_footer))
+                                    <div class="mb-2">
+                                        <img src="{{asset($result->logo_footer)}}" style="width: 100px;height: 100px;">
+                                    </div>
+                                    @endif
+                                    <input type="file" class="form-control" name="logo_footer" accept="image/*">
                                     <p class="text-success" style="margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px;"><small><i>Ukuran direkomendasikan 309px x 69px</i></small></p>
                                     <p class="text-info" style="margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px;"><small><i>Kosongkan jika tidak diubah</i></small></p>
                                 </div>

@@ -55,6 +55,7 @@ class LandingPageSettingController extends Controller
             $head_of_office_quotes = $request->head_of_office_quotes;
             $footer = $request->footer;
             $logo = $request->file("logo");
+            $logo_footer = $request->file("logo_footer");
             $banner = $request->file("banner");
             $favicon = $request->file("favicon");
             $organization = $request->file("organization");
@@ -77,6 +78,16 @@ class LandingPageSettingController extends Controller
                 }
 
                 $logo = $upload["Path"];
+            }
+
+            if ($logo_footer) {
+                $upload = UploadHelper::upload_file($logo_footer, 'settings', LandingPageSettingEnum::LOGO_EXT);
+
+                if ($upload["IsError"] == TRUE) {
+                    return ResponseHelper::apiResponse(false, $upload["Message"] , null, null, 422);
+                }
+
+                $logo_footer = $upload["Path"];
             }
 
             if ($banner) {
@@ -115,6 +126,9 @@ class LandingPageSettingController extends Controller
             }
             if ($logo) {
                 $landingPageSetting->logo = $logo;
+            }
+            if ($logo_footer) {
+                $landingPageSetting->logo_footer = $logo_footer;
             }
             if ($favicon) {
                 $landingPageSetting->favicon = $favicon;
