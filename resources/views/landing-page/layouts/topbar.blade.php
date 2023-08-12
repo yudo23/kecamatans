@@ -202,6 +202,10 @@
             </li>
 
             <li class="bg-main">
+                <a href="{{route('landing-page.files.index')}}">Download File</a>
+            </li>
+
+            <li class="bg-main">
                 <a href="{{route('landing-page.contact-us.index')}}">Hubungi Kami</a>
             </li>
         </ul>
