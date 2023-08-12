@@ -5,9 +5,12 @@ namespace App\Http\Controllers\LandingPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Settings\LandingPageSetting;
+use App\Traits\HasSeo;
 
 class OrganizationController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
 
@@ -21,6 +24,10 @@ class OrganizationController extends Controller
         $data = [
             'result' => $landingPageSetting
         ];
+
+        $this->seo(
+            title: "Organisasi",
+        );
 
         return view($this->view."index",$data);
     }

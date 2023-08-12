@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\LandingPage;
 
 use App\Enums\AnnouncementEnum;
+use App\Helpers\SettingHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\AnnouncementService;
+use App\Traits\HasSeo;
 
 class AnnouncementController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
     protected $announcementService;
@@ -29,6 +33,10 @@ class AnnouncementController extends Controller
         }
         $table = $table->data;
 
+        $this->seo(
+            title: "Pengumuman",
+        );
+
         $data = [
             'table' => $table,
         ];
@@ -43,6 +51,14 @@ class AnnouncementController extends Controller
             return redirect()->route('landing-page.home.index')->withInput();
         }
         $result = $result->data;
+
+        $this->seo(
+            title: $result->title,
+            description: $result->trixRender("content"),
+            keywords: $result->title,
+            url: route("landing-page.announcements.show",$result->slug),
+            image: asset($result->image),
+        );
 
         $data = [
             'result' => $result,

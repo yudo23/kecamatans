@@ -5,9 +5,12 @@ namespace App\Http\Controllers\LandingPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\FileService;
+use App\Traits\HasSeo;
 
 class FileController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
     protected $fileService;
@@ -26,6 +29,10 @@ class FileController extends Controller
             return redirect()->route('landing-page.home.index')->withInput();
         }
         $table = $table->data;
+
+        $this->seo(
+            title: "Download File",
+        );
 
         $data = [
             'table' => $table

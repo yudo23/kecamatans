@@ -31,7 +31,7 @@
                 <div class="row mb-3">
                     <div class="col-lg-12">
                         <a href="#" class="btn btn-success btn-sm btn-filter"><i class="fa fa-filter"></i> Filter</a>
-                        <a href="{{route('dashboard.galleries.index')}}" class="btn @if(!empty(request()->all())) btn-warning @else btn-secondary @endif btn-sm"><i class="fa fa-refresh"></i> Refresh</a>
+                        <a href="{{route('dashboard.indonesia.provinces.index')}}" class="btn @if(!empty(request()->all())) btn-warning @else btn-secondary @endif btn-sm"><i class="fa fa-refresh"></i> Refresh</a>
                     </div>
                 </div>
                 <div class="row">

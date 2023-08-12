@@ -5,9 +5,12 @@ namespace App\Http\Controllers\LandingPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\EmployeeService;
+use App\Traits\HasSeo;
 
 class EmployeeController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
     protected $employeeService;
@@ -26,6 +29,10 @@ class EmployeeController extends Controller
             return redirect()->route('landing-page.home.index')->withInput();
         }
         $table = $table->data;
+
+        $this->seo(
+            title: "Kepegawaian",
+        );
 
         $data = [
             'table' => $table

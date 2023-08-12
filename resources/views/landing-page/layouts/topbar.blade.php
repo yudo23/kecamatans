@@ -5,8 +5,12 @@
             <div class="container">
                 <div class="content-topbar">
                     <div class="left-top-bar">
-                        <a href="{{route('landing-page.home.index')}}">Home</a>
                         <a href="{{route('landing-page.contact-us.index')}}">Hubungi Kami</a>
+                        @if(!Auth::check())
+                        <a href="{{route('dashboard.auth.login.index')}}">Login</a>
+                        @else
+                        <a href="{{route('dashboard.index')}}">Dashboard</a>
+                        @endif
                     </div>
 
                     <div class="right-top-bar">
@@ -47,6 +51,7 @@
                                 <li><a href="{{route('landing-page.organizations.index')}}">Struktur Organisasi</a></li>
                                 <li><a href="{{route('landing-page.populations.index')}}">Jumlah Penduduk</a></li>
                                 <li><a href="{{route('landing-page.employees.index')}}">Kepegawaian</a></li>
+                                <li><a href="{{route('landing-page.pages.index','service-hours')}}">Jam Buka Layanan</a></li>
                             </ul>
                         </li>
 

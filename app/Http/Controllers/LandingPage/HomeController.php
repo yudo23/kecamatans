@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\LandingPage;
 
+use App\Helpers\SettingHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\SliderService;
@@ -10,9 +11,12 @@ use App\Services\BlogService;
 use App\Services\GalleryService;
 use App\Services\AnnouncementService;
 use App\Settings\LandingPageSetting;
+use App\Traits\HasSeo;
 
 class HomeController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
     protected $sliderService;
@@ -47,6 +51,14 @@ class HomeController extends Controller
 
         $announcements = $this->announcementService->index(new Request([]),false);
         $announcements = $announcements->data->take(6);
+
+        $this->seo(
+            title: SettingHelper::settings("landing_page", "title"),
+            description: SettingHelper::settings("landing_page", "description"),
+            keywords: SettingHelper::settings("landing_page", "keyword"),
+            url: null,
+            image: SettingHelper::settings("landing_page", "logo")
+        );
 
         $data = [
             'sliders' => $sliders,

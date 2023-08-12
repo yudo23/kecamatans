@@ -171,12 +171,9 @@ Route::group(['middleware' => ['auth', 'dashboard.access', 'verified:dashboard.a
 
 	Route::group(["as" => "pages.", "prefix" => "pages"], function () {
 		Route::get('/', 'PageController@index')->name("index")->middleware(['role:' . implode('|', [RoleEnum::SUPERADMIN,RoleEnum::ADMINISTRATOR])]);
-		Route::get('/create', 'PageController@create')->name("create")->middleware(['role:' . implode('|', [RoleEnum::SUPERADMIN,RoleEnum::ADMINISTRATOR])]);
 		Route::get('/{id}', 'PageController@show')->name("show")->middleware(['role:' . implode('|', [RoleEnum::SUPERADMIN,RoleEnum::ADMINISTRATOR])]);
 		Route::get('/{id}/edit', 'PageController@edit')->name("edit")->middleware(['role:' . implode('|', [RoleEnum::SUPERADMIN,RoleEnum::ADMINISTRATOR])]);
-		Route::post('/', 'PageController@store')->name("store")->middleware(['role:' . implode('|', [RoleEnum::SUPERADMIN,RoleEnum::ADMINISTRATOR])]);
 		Route::put('/{id}', 'PageController@update')->name("update")->middleware(['role:' . implode('|', [RoleEnum::SUPERADMIN,RoleEnum::ADMINISTRATOR])]);
-		Route::delete('/{id}', 'PageController@destroy')->name("destroy")->middleware(['role:' . implode('|', [RoleEnum::SUPERADMIN,RoleEnum::ADMINISTRATOR])]);
 	});
 
 	Route::group(["as" => "employees.", "prefix" => "employees"], function () {

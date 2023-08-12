@@ -81,7 +81,6 @@
                         <div class="d-flex justify-content-start mt-3">
                             <a href="{{route('dashboard.pages.index')}}" class="btn btn-warning btn-sm" style="margin-right: 10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
                             <a href="{{route('dashboard.pages.edit',$result->id)}}" class="btn btn-primary btn-sm" style="margin-right: 10px;"><i class="fa fa-edit"></i> Edit</a>
-                            <a href="#" class="btn btn-danger btn-sm btn-delete" data-id="{{$result->id}}"><i class="fa fa-trash"></i> Hapus</a>
                         </div>
                     </div>
                 </div>
@@ -89,25 +88,11 @@
         </div>
     </div>
 </div>
-
-<form id="frmDelete" method="POST">
-    @csrf
-    @method('DELETE')
-    <input type="hidden" name="id"/>
-</form>
 @endsection
 
 @section("script")
 <script>
     $(function(){
-        $(document).on("click", ".btn-delete", function() {
-            let id = $(this).data("id");
-            if (confirm("Apakah anda yakin ingin menghapus data ini ?")) {
-                $("#frmDelete").attr("action", "{{ route('dashboard.pages.destroy', '_id_') }}".replace("_id_", id));
-                $("#frmDelete").find('input[name="id"]').val(id);
-                $("#frmDelete").submit();
-            }
-        })
     })
 </script>
 @endsection

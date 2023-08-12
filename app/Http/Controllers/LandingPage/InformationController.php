@@ -5,9 +5,12 @@ namespace App\Http\Controllers\LandingPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\InformationService;
+use App\Traits\HasSeo;
 
 class InformationController extends Controller
 {
+    use HasSeo;
+    
     protected $route;
     protected $view;
     protected $informationService;
@@ -27,6 +30,10 @@ class InformationController extends Controller
         }
         $table = $table->data;
 
+        $this->seo(
+            title: "Informasi Desa",
+        );
+
         $data = [
             'table' => $table,
         ];
@@ -41,6 +48,14 @@ class InformationController extends Controller
             return redirect()->route('landing-page.home.index')->withInput();
         }
         $result = $result->data;
+
+        $this->seo(
+            title: $result->village->name ?? null,
+            description: $result->trixRender("content"),
+            keywords: $result->village->name ?? null,
+            url: route("landing-page.informations.show",$result->slug),
+            image: null,
+        );
 
         $data = [
             'result' => $result,

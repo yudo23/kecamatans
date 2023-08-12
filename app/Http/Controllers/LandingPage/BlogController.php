@@ -7,9 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\BlogService;
 use App\Services\BlogCategoryService;
+use App\Traits\HasSeo;
 
 class BlogController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
     protected $blogService;
@@ -35,6 +38,10 @@ class BlogController extends Controller
         $categories = $this->blogCategoryService->index(new Request([]),false);
         $categories = $categories->data;
 
+        $this->seo(
+            title: "Berita",
+        );
+
         $data = [
             'table' => $table,
             'categories' => $categories,
@@ -57,6 +64,14 @@ class BlogController extends Controller
         $categories = $this->blogCategoryService->index(new Request([]),false);
         $categories = $categories->data;
 
+        $this->seo(
+            title: $result->title,
+            description: $result->trixRender("content"),
+            keywords: $result->title,
+            url: route("landing-page.blogs.show",$result->slug),
+            image: asset($result->image),
+        );
+
         $data = [
             'result' => $result,
             'blogs' => $blogs,
@@ -76,6 +91,10 @@ class BlogController extends Controller
 
         $categories = $this->blogCategoryService->index(new Request([]),false);
         $categories = $categories->data;
+
+        $this->seo(
+            title: "Pengumuman",
+        );
 
         $data = [
             'table' => $table,

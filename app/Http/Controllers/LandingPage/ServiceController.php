@@ -5,9 +5,12 @@ namespace App\Http\Controllers\LandingPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\ServiceService;
+use App\Traits\HasSeo;
 
 class ServiceController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
     protected $serviceService;
@@ -27,6 +30,10 @@ class ServiceController extends Controller
         }
         $table = $table->data;
 
+        $this->seo(
+            title: "Layanan Kami",
+        );
+
         $data = [
             'table' => $table,
         ];
@@ -41,6 +48,14 @@ class ServiceController extends Controller
             return redirect()->route('landing-page.home.index')->withInput();
         }
         $result = $result->data;
+
+        $this->seo(
+            title: $result->name,
+            description: $result->trixRender("content"),
+            keywords: $result->name,
+            url: route("landing-page.services.show",$result->slug),
+            image: null,
+        );
 
         $data = [
             'result' => $result

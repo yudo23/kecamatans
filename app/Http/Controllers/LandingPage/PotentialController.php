@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\PotentialService;
 use App\Services\PotentialCategoryService;
+use App\Traits\HasSeo;
 
 class PotentialController extends Controller
 {
+    use HasSeo;
+    
     protected $route;
     protected $view;
     protected $potentialService;
@@ -33,6 +36,10 @@ class PotentialController extends Controller
         $categories = $this->potentialCategoryService->index(new Request([]),false);
         $categories = $categories->data;
 
+        $this->seo(
+            title: "Potensi Desa",
+        );
+
         $data = [
             'table' => $table,
             'categories' => $categories,
@@ -55,6 +62,14 @@ class PotentialController extends Controller
         $potentials = $this->potentialService->index(new Request([]),false);
         $potentials = $potentials->data->take(5);
 
+        $this->seo(
+            title: $result->title,
+            description: $result->trixRender("content"),
+            keywords: $result->title,
+            url: route("landing-page.potentials.show",$result->slug),
+            image: asset($result->image),
+        );
+
         $data = [
             'result' => $result,
             'categories' => $categories,
@@ -74,6 +89,10 @@ class PotentialController extends Controller
 
         $categories = $this->potentialCategoryService->index(new Request([]),false);
         $categories = $categories->data;
+
+        $this->seo(
+            title: "Potensi Desa",
+        );
 
         $data = [
             'table' => $table,

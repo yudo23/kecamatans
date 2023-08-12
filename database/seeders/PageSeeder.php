@@ -26,5 +26,12 @@ class PageSeeder extends Seeder
             'slug' => 'histories',
             'name' => 'Sejarah',
         ]);
+
+        Page::updateOrCreate([
+            'slug' => 'service-hours'
+        ],[
+            'slug' => 'service-hours',
+            'name' => 'Jam Buka Pelayanan',
+        ]);
     }
 }

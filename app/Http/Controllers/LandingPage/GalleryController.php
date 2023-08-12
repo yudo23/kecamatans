@@ -5,9 +5,12 @@ namespace App\Http\Controllers\LandingPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\GalleryService;
+use App\Traits\HasSeo;
 
 class GalleryController extends Controller
 {
+    use HasSeo;
+
     protected $route;
     protected $view;
     protected $galleryService;
@@ -26,6 +29,10 @@ class GalleryController extends Controller
             return redirect()->route('landing-page.home.index')->withInput();
         }
         $table = $table->data;
+
+        $this->seo(
+            title: "Galeri",
+        );
 
         $data = [
             'table' => $table

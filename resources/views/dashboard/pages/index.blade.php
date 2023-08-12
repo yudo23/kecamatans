@@ -30,7 +30,6 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-lg-12">
-                        <a href="{{route('dashboard.pages.create')}}" class="btn btn-primary btn-sm btn-add"><i class="fa fa-plus"></i> Tambah</a>
                         <a href="#" class="btn btn-success btn-sm btn-filter"><i class="fa fa-filter"></i> Filter</a>
                         <a href="{{route('dashboard.pages.index')}}" class="btn @if(!empty(request()->all())) btn-warning @else btn-secondary @endif btn-sm"><i class="fa fa-refresh"></i> Refresh</a>
                     </div>
@@ -55,7 +54,6 @@
                                                 <div class="dropdown-menu">
                                                     <a href="{{route('dashboard.pages.show',$row->id)}}" class="dropdown-item"><i class="fa fa-eye"></i> Show</a>
                                                     <a href="{{route('dashboard.pages.edit',$row->id)}}" class="dropdown-item"><i class="fa fa-edit"></i> Edit</a>
-                                                    <a href="#" class="dropdown-item btn-delete" data-id="{{$row->id}}"><i class="fa fa-trash"></i> Hapus</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -82,12 +80,6 @@
 
 @include("dashboard.pages.modal.index")
 
-<form id="frmDelete" method="POST">
-    @csrf
-    @method('DELETE')
-    <input type="hidden" name="id" />
-</form>
-
 @endsection
 
 @section("script")
@@ -98,15 +90,6 @@
 
             $("#modalFilter").modal("show");
         });
-
-        $(document).on("click", ".btn-delete", function() {
-            let id = $(this).data("id");
-            if (confirm("Apakah anda yakin ingin menghapus data ini ?")) {
-                $("#frmDelete").attr("action", "{{ route('dashboard.pages.destroy', '_id_') }}".replace("_id_", id));
-                $("#frmDelete").find('input[name="id"]').val(id);
-                $("#frmDelete").submit();
-            }
-        })
     })
 </script>
 @endsection
