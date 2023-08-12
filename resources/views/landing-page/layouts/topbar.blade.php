@@ -118,7 +118,12 @@
         <ul class="topbar-mobile">
             <li class="bo1-b p-t-8 p-b-8">
                 <div class="left-top-bar p-l-7">
-                    <a href="#">Hubungi Kami</a>
+                    <a href="{{route('landing-page.contact-us.index')}}">Hubungi Kami</a>
+                    @if(!Auth::check())
+                    <a href="{{route('dashboard.auth.login.index')}}">Login</a>
+                    @else
+                    <a href="{{route('dashboard.index')}}">Dashboard</a>
+                    @endif
                 </div>
             </li>
 
@@ -143,11 +148,18 @@
 
         <ul class="main-menu-m bg-main">
             <li class="bg-main">
-                <a href="index.html">Home</a>
+                <a href="{{route('landing-page.home.index')}}">Home</a>
+            </li>
+
+            <li class="bg-main">
+                <a href="#">Profile</a>
                 <ul class="sub-menu-m">
-                    <li><a href="index.html">Homepage V1</a></li>
-                    <li><a href="home-02.html">Homepage V2</a></li>
-                    <li><a href="home-03.html">Homepage V3</a></li>
+                    <li><a href="{{route('landing-page.pages.index','histories')}}">Sejarah</a></li>
+                    <li><a href="{{route('landing-page.pages.index','visi-misi')}}">Visi Misi</a></li>
+                    <li><a href="{{route('landing-page.organizations.index')}}">Struktur Organisasi</a></li>
+                    <li><a href="{{route('landing-page.populations.index')}}">Jumlah Penduduk</a></li>
+                    <li><a href="{{route('landing-page.employees.index')}}">Kepegawaian</a></li>
+                    <li><a href="{{route('landing-page.pages.index','service-hours')}}">Jam Buka Layanan</a></li>
                 </ul>
                 <span class="arrow-main-menu-m">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -155,11 +167,11 @@
             </li>
 
             <li class="bg-main">
-                <a href="#">Courses</a>
+                <a href="{{route('landing-page.services.index')}}">Layanan</a>
                 <ul class="sub-menu-m">
-                    <li><a href="#">Course List</a></li>
-                    <li><a href="course-grid.html">Course Grid</a></li>
-                    <li><a href="course-detail.html">Course Detail</a></li>
+                    @foreach(\SettingHelper::service() as $index => $row)
+                    <li><a href="{{route('landing-page.services.show',$row->slug)}}">{{$row->name}}</a></li>
+                    @endforeach
                 </ul>
                 <span class="arrow-main-menu-m">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -167,13 +179,10 @@
             </li>
 
             <li class="bg-main">
-                <a href="about-team.html">Teachers</a>
-            </li>
-
-            <li class="bg-main">
-                <a href="#">Pages</a>
+                <a href="#">Informasi</a>
                 <ul class="sub-menu-m">
-                    <li><a href="photo-gallery.html">Photo Gallery</a></li>
+                    <li><a href="{{route('landing-page.potentials.index')}}">Potensi Desa</a></li>
+                    <li><a href="{{route('landing-page.informations.index')}}">Informasi Desa</a></li>
                 </ul>
                 <span class="arrow-main-menu-m">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -181,29 +190,19 @@
             </li>
 
             <li class="bg-main">
-                <a href="blog.html">Blog</a>
-                <ul class="sub-menu-m">
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="blog-single.html">Blog Single</a></li>
-                </ul>
-                <span class="arrow-main-menu-m">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </span>
+                <a href="{{route('landing-page.galleries.index')}}">Galeri</a>
             </li>
 
             <li class="bg-main">
-                <a href="about.html">About</a>
-                <ul class="sub-menu-m">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="about-team.html">About Team Member</a></li>
-                </ul>
-                <span class="arrow-main-menu-m">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </span>
+                <a href="{{route('landing-page.announcements.index')}}">Pengumuman</a>
             </li>
 
             <li class="bg-main">
-                <a href="contact.html">Contact</a>
+                <a href="{{route('landing-page.blogs.index')}}">Berita</a>
+            </li>
+
+            <li class="bg-main">
+                <a href="{{route('landing-page.contact-us.index')}}">Hubungi Kami</a>
             </li>
         </ul>
     </div>

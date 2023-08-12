@@ -115,7 +115,7 @@
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="{{route('dashboard.index')}}" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="{{!empty(\SettingHelper::settings('dashboard', 'logo_light_sm')) ? asset(\SettingHelper::settings('dashboard', 'logo_light_sm')) : URL::to('/').'/templates/dashboard/assets/images/logo-sm.png'}}" alt="" height="20">
                         </span>
