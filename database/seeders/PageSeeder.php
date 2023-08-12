@@ -13,21 +13,21 @@ class PageSeeder extends Seeder
      */
     public function run(): void
     {
-        Page::updateOrCreate([
+        Page::firstOrCreate([
             'slug' => 'visi-misi'
         ],[
             'slug' => 'visi-misi',
             'name' => 'Visi Misi',
         ]);
 
-        Page::updateOrCreate([
+        Page::firstOrCreate([
             'slug' => 'histories'
         ],[
             'slug' => 'histories',
             'name' => 'Sejarah',
         ]);
 
-        Page::updateOrCreate([
+        Page::firstOrCreate([
             'slug' => 'service-hours'
         ],[
             'slug' => 'service-hours',
