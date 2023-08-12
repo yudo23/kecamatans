@@ -205,14 +205,12 @@
                                     <p class="text-info" style="margin-top: 0px;margin-bottom: 0px;padding-top: 0px;padding-bottom: 0px;"><small><i>Kosongkan jika tidak diubah</i></small></p>
                                 </div>
                             </div>
-                            @if(Auth::user()->hasRole([\App\Enums\RoleEnum::SUPERADMIN]))
                             <div class="form-group row mb-3">
                                 <label class="col-md-2 col-form-label">Footer <span class="text-danger">*</span></label>
                                 <div class="col-md-10">
                                     <input type="text" class="form-control" name="footer" placeholder="Footer" value="{{old('footer',$result->footer)}}">
                                 </div>
                             </div>
-                            @endif
                         </div>
                     </div>
                     <div class="row">
