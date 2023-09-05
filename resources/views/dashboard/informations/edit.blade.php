@@ -29,7 +29,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <form method="POST" action="{{route('dashboard.announcements.update',$result->id)}}" id="frmUpdate">
+                <form method="POST" action="{{route('dashboard.informations.update',$result->id)}}" id="frmUpdate">
                     @csrf
                     @method("PUT")
                     <div class="form-group row mb-3">
@@ -72,7 +72,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <a href="{{route('dashboard.announcements.index')}}" class="btn btn-warning btn-sm"><i class="fa fa-arrow-left"></i> Kembali</a>
+                            <a href="{{route('dashboard.informations.index')}}" class="btn btn-warning btn-sm"><i class="fa fa-arrow-left"></i> Kembali</a>
                             <button type="submit" class="btn btn-primary btn-sm" disabled><i class="fa fa-save"></i> Simpan</button>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                             responseFailed(resp.message);
                         }
                         else{
-                            responseSuccess(resp.message,"{{route('dashboard.announcements.index')}}");
+                            responseSuccess(resp.message,"{{route('dashboard.informations.index')}}");
                         }
                     },
                     error: function (request, status, error) {
