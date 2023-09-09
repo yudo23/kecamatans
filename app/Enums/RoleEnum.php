@@ -3,6 +3,7 @@
 namespace App\Enums;
 
 use BenSampo\Enum\Enum;
+use Auth;
 
 /**
  * @method static static OptionOne()
@@ -20,6 +21,10 @@ final class RoleEnum extends Enum
             self::SUPERADMIN,
             self::ADMINISTRATOR,
         ];
+
+        if(Auth::user()->hasRole([RoleEnum::ADMINISTRATOR])){
+            $roles[0];
+        }
         
         return $roles;
     }
