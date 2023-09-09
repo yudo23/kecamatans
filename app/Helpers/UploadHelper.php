@@ -30,8 +30,8 @@ class UploadHelper{
               }
           }
 
-          if(!is_dir(public_path("storage/$last_folder/"))){
-            mkdir(public_path("storage/$last_folder/"),0777,true);
+          if(!is_dir(storage_path("app/public/$folder"))){
+            mkdir(storage_path("app/public/$folder"),0777,true);
           }
   
           $name = Str::random(100). "." . $ext;
