@@ -5,10 +5,6 @@
                 <div class="w-full wrap-pic-max-w">
                     <a href="{{route('landing-page.home.index')}}"><img src="{{!empty(\SettingHelper::settings('landing_page', 'logo_footer')) ? asset(\SettingHelper::settings('landing_page', 'logo_footer')) : URL::to('/').'/templates/landing-page/images/icons/logo-02.png'}}" alt="{{\SettingHelper::settings('landing_page', 'title')}}" alt="{{\SettingHelper::settings('landing_page', 'title')}}"></a>
                 </div>
-
-                <p class="s-txt9 p-t-30">
-                    {{\SettingHelper::settings('landing_page', 'description')}}
-                </p>
             </div>
             
             <div class=" col-sm-6 col-lg-4 p-t-30">
