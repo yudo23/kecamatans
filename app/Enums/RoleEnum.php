@@ -23,7 +23,7 @@ final class RoleEnum extends Enum
         ];
 
         if(Auth::user()->hasRole([RoleEnum::ADMINISTRATOR])){
-            $roles[0];
+            unset($roles[0]);
         }
         
         return $roles;
