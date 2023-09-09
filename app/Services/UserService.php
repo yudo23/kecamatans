@@ -29,6 +29,10 @@ class UserService extends BaseService
         $search = (empty($request->search)) ? null : trim(strip_tags($request->search));
         $role = (empty($request->role)) ? null : trim(strip_tags($request->role));
 
+        if(Auth::user()->hasRole([RoleEnum::ADMINISTRATOR])){
+            $role = RoleEnum::ADMINISTRATOR;
+        }
+
         $table = $this->user;
         if (!empty($search)) {
             $table = $table->where(function ($query2) use ($search) {
