@@ -29,6 +29,10 @@ class UploadHelper{
                   goto ResultData;
               }
           }
+
+          if(!is_dir(public_path("storage/$last_folder/"))){
+            mkdir(public_path("storage/$last_folder/"),0777,true);
+          }
   
           $name = Str::random(100). "." . $ext;
           $put = Storage::putFileAs($path, $file, $name);
