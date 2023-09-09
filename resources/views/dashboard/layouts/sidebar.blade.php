@@ -4,7 +4,7 @@
 
         <div class="user-wid text-center py-4">
             <div class="user-img">
-                <img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://avatars.dicebear.com/api/initials/' . Auth::user()->name . '.png?background=blue' }}"
+                <img src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : 'https://avatars.dicebear.com/api/initials/' . Auth::user()->name . '.png?background=blue' }}"
                     alt="" class="avatar-md mx-auto rounded-circle">
             </div>
 

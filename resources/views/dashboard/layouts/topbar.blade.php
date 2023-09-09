@@ -94,7 +94,7 @@
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="rounded-circle header-profile-user"
-                            src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : 'https://avatars.dicebear.com/api/initials/' . Auth::user()->name . '.png?background=blue' }}"
+                            src="{{ Auth::user()->avatar ? asset(Auth::user()->avatar) : 'https://avatars.dicebear.com/api/initials/' . Auth::user()->name . '.png?background=blue' }}"
                             alt="Header Avatar">
                         <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
